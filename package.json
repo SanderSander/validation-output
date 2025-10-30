@@ -1,0 +1,40 @@
+{
+  "name": "validation-output",
+  "version": "0.1.1",
+  "description": "Provides a way to show and style client side validation errors how you wish.",
+  "author": "Sander Visser <themastersleader@hotmail.com>",
+  "type": "module",
+  "main": "./validation-output.js",
+  "types": "./validation-output.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sandersander/validation-output.git"
+  },
+  "keywords": [
+    "web components",
+    "validation",
+    "client side validation"
+  ],
+  "files": [
+    "validation-output.d.ts",
+    "validation-output.js",
+    "validation-output.js.map"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint validation-output.ts",
+    "lint:fix": "eslint validation-output.ts --fix",
+    "format": "prettier --check validation-output.ts",
+    "format:fix": "prettier --write validation-output.ts",
+    "prepublishOnly": "npm run format && npm run lint && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2"
+  }
+}

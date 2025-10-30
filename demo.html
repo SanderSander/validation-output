@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>&lt;validation-output&gt;</title>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/validation-output@latest/validation-output.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <style type="text/tailwindcss">
+            @layer components {
+                .label {
+                    @apply block mb-2 text-sm text-slate-600;
+                }
+                .input {
+                    @apply w-full bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease-in-out focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow;
+                    @variant user-invalid {
+                        @apply placeholder:text-red-400 text-red-700 border-red-200 focus:border-red-500 hover:border-red-300
+                    }
+                    &[data-server-invalid] {
+                        @apply placeholder:text-red-400 text-red-700 border-red-200 focus:border-red-500 hover:border-red-300;
+                    }
+                }
+                .validation-output {
+                    @apply -z-1 absolute text-xs text-slate-600 top-full -translate-y-[100%] left-3 px-2 py-1 bg-red-200 rounded-b-md transition duration-300 ease-in-out;
+                    &:state(has-error) {
+                        @apply translate-y-0 shadow-sm;
+                    }
+                }
+                .validation-output-checkbox {
+                    @apply invisible text-xs text-slate-600 px-2 py-1 bg-red-200 rounded-md transition duration-300 ease-in-out;
+                    &:state(has-error) {
+                        @apply visible;
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body class="flex gap-12 items-center justify-center h-screen">
+        <form class="w-xl flex flex-col p-8 pt-6 border rounded-lg border-slate-200">
+            <code class="text-2xl mb-6 text-slate-600">&lt;validation-output&gt;</code>
+
+            <!-- Client side validation -->
+            <label for="email" class="label">Email</label>
+            <div class="relative">
+                <input type="email" id="email" required class="input" aria-describedby="email-validation-error" placeholder="Enter your email">
+                <validation-output for="email" class="validation-output" id="email-validation-error"></validation-output>
+            </div>
+
+            <!-- Number validation -->
+            <label for="number" class="label mt-8">Number between 5 and 90</label>
+            <div class="relative">
+                <input type="number" id="number" required class="input" min="5" max="90" aria-describedby="number-validation-error" placeholder="Enter a number">
+                <validation-output for="number" class="validation-output" id="number-validation-error"></validation-output>
+            </div>
+
+            <!-- Server validation -->
+            <label for="decline" class="label mt-8">Server declined the text "decline"</label>
+            <div class="relative">
+                <input type="text" id="decline" class="input" value="decline" aria-describedby="decline-validation-error" placeholder="Enter everything except 'decline'">
+                <validation-output for="decline" class="validation-output" id="decline-validation-error">The word <b>"decline"</b> was declined on the server.</validation-output>
+            </div>
+
+            <!-- Custom validation message -->
+            <label for="decline" class="label mt-8">Custom validation message</label>
+            <div class="relative">
+                <input type="text" id="custom" class="input" minlength="5" aria-describedby="custom-validation-error" placeholder="Minimal 5 characters">
+                <validation-output for="custom" class="validation-output" id="custom-validation-error" template="custom-validation-messages"></validation-output>
+                <template id="custom-validation-messages">
+                    <template data-validity="valueMissing">Aren't we missing something here?</template>
+                    <template data-validity="tooShort">More more!, we need <b>more</b> text!</template>
+                </template>
+            </div>
+
+            <!-- Textarea -->
+            <label for="textarea" class="label mt-8">Textarea</label>
+            <div class="relative">
+                <textarea minlength="100" id="textarea" required class="input block" aria-describedby="textarea-validation-error"></textarea>
+                <validation-output for="textarea" class="validation-output" id="textarea-validation-error" template="custom-validation-messages"></validation-output>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="flex items-center gap-2 h-8 mt-8">
+                <label for="checkbox" class="label flex items-center gap-2">
+                    <input type="checkbox" id="checkbox" required aria-describedby="checkbox-validation-error"> Checkbox
+                    <validation-output for="checkbox" class="validation-output-checkbox" id="checkbox-validation-error"></validation-output>
+                </label>
+            </div>
+
+            <button type="submit" class="mt-6 bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-400 transition duration-300 ease-in-out cursor-pointer">Submit</button>
+        </form>
+    </body>
+</html>

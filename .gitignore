@@ -1,0 +1,5 @@
+/node_modules
+*.d.ts
+*.d.ts.map
+validation-output.js
+validation-output.js.map
