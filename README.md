@@ -51,8 +51,12 @@ The attribute value must match a property from the
 
 ```html
 <template id="validation-messages">
-    <template data-validity="typeMismatch">This is not looking right</template>
-    <template data-validity="valueMissing">I expect an <b>email</b>, <i>darling!</i></template>
+    <template data-validity="typeMismatch">
+        This is not looking right
+    </template>
+    <template data-validity="valueMissing">
+        I expect an <b>email</b>, <i>darling!</i>
+    </template>
 </template>
 
 <input type="email" id="email" required />
@@ -67,7 +71,9 @@ Add text content to the `<validation-output>` element to display server-side val
 
 ```html
 <input type="email" id="email" value="known@email" />
-<validation-output for="email">Email <b>known@email</b> already registered</validation-output>
+<validation-output for="email">
+    Email <b>known@email</b> already registered
+</validation-output>
 ```
 
 When the user modifies the input field, the server-side message is hidden.

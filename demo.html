@@ -66,8 +66,12 @@
                 <input type="text" id="custom" class="input" minlength="5" aria-describedby="custom-validation-error" placeholder="Minimal 5 characters">
                 <validation-output for="custom" class="validation-output" id="custom-validation-error" template="custom-validation-messages"></validation-output>
                 <template id="custom-validation-messages">
-                    <template data-validity="valueMissing">Aren't we missing something here?</template>
-                    <template data-validity="tooShort">More more!, we need <b>more</b> text!</template>
+                    <template data-validity="valueMissing">
+                        Aren't we missing something here?
+                    </template>
+                    <template data-validity="tooShort">
+                        More more!, we need <b>more</b> text!
+                    </template>
                 </template>
             </div>
 
