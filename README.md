@@ -25,7 +25,7 @@ import 'validation-output';
 You can also load the component via CDN:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/validation-output@latest/validation-output.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/validation-output@latest/validation-output.min.js"></script>
 ```
 
 ## Usage
