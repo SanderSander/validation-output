@@ -1,7 +1,8 @@
 # Validation Output
 [![npm version](https://badge.fury.io/js/validation-output.svg)](https://www.npmjs.com/package/validation-output)
 
-A web component that displays custom validation messages, replacing the browser default validation UI.
+A web component for custom client-side form validation. Replaces the browser's default validation UI with your own styled messages. 
+Gives you control over how validation feedback is displayed to users and keeps it consistent across your application.
 
 [View live demo](https://sandersander.github.io/validation-output/demo.html)
 
