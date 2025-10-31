@@ -10,7 +10,7 @@
   "homepage": "https://github.com/sandersander/validation-output",
   "repository": {
     "type": "git",
-    "url": "git@github.com:sandersander/validation-output.git"
+    "url": "git+https://github.com/SanderSander/validation-output.git"
   },
   "keywords": [
     "web components",
