@@ -1,5 +1,5 @@
 # Validation Output
-[![npm version](https://badge.fury.io/js/validation-output.svg)](https://www.npmjs.com/package/validation-output)
+![NPM Version](https://img.shields.io/npm/v/validation-output)
 
 A web component for custom client-side form validation. Replaces the browser's default validation UI with your own styled messages. 
 Gives you control over how validation feedback is displayed to users and keeps it consistent across your application.
