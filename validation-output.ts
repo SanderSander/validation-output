@@ -92,6 +92,12 @@ class ValidationOutput extends HTMLElement {
     }
 
     #handleInput = () => {
+        // The form could be tried to be submitted but failed on other inputs.
+        // In this case, our #for target is flagged as "interacted" and gets the :user-invalid state.
+        if (this.#for.matches(":user-invalid")) {
+            this.#interacted = true;
+        }
+
         // User did not interact yet with the input element; this means that :user-invalid state is not applied yet.
         if (!this.#interacted) {
             return;
