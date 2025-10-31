@@ -1,6 +1,6 @@
 {
   "name": "validation-output",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Provides a way to show and style client side validation errors how you wish.",
   "author": "Sander Visser <themastersleader@hotmail.com>",
   "type": "module",
