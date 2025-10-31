@@ -6,6 +6,8 @@
   "type": "module",
   "main": "./validation-output.js",
   "types": "./validation-output.d.ts",
+  "license": "MIT",
+  "homepage": "https://github.com/sandersander/validation-output",
   "repository": {
     "type": "git",
     "url": "git@github.com:sandersander/validation-output.git"
