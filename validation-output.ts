@@ -44,7 +44,12 @@ class ValidationOutput extends HTMLElement {
         this.#serverError = this.innerHTML;
         this.#serverErrorValue = this.#for.value;
         this.#for.setCustomValidity(this.#serverError);
-        this.#internals.states.add("has-error");
+
+        // If the element is added to the DOM, we need to wait until the element is rendered.
+        // Otherwise, transitions/animations will not work correctly.
+        requestAnimationFrame(() => {
+            this.#internals.states.add("has-error");
+        });
 
         // This is a hack to make the server-side validation error stylable in the input element.
         this.#for.setAttribute("data-server-invalid", "true");
