@@ -41,6 +41,8 @@ class ValidationOutput extends HTMLElement {
     #initializeServerError() {
         if (!this.innerHTML.trim()) return;
 
+        // Flag is interacted so that the user can remove the error message on input.
+        this.#interacted = true;
         this.#serverError = this.innerHTML;
         this.#serverErrorValue = this.#for.value;
 
