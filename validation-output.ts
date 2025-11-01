@@ -43,7 +43,12 @@ class ValidationOutput extends HTMLElement {
 
         this.#serverError = this.innerHTML;
         this.#serverErrorValue = this.#for.value;
-        this.#for.setCustomValidity(this.#serverError);
+
+        // We only set the custom validity if the element is persistent.
+        // If we set this while not persistent, the client will not be able to submit the form
+        if (this.hasAttribute("persistent")) {
+            this.#for.setCustomValidity(this.#serverError);
+        }
 
         // If the element is added to the DOM, we need to wait until the element is rendered.
         // Otherwise, transitions/animations will not work correctly.
@@ -131,7 +136,11 @@ class ValidationOutput extends HTMLElement {
         }
 
         // Check if the user reverted to the original server-rejected value
-        if (this.#serverError && this.#for.value === this.#serverErrorValue) {
+        if (
+            this.#serverError &&
+            this.#for.value === this.#serverErrorValue &&
+            this.hasAttribute("persistent")
+        ) {
             this.#for.setCustomValidity(this.#serverError);
             this.#setErrorMessage(this.#serverError);
             return;

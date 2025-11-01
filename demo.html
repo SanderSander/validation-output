@@ -57,7 +57,9 @@
             <label for="decline" class="label mt-8">Server declined the text "decline"</label>
             <div class="relative">
                 <input type="text" id="decline" class="input" value="decline" aria-describedby="decline-validation-error" placeholder="Enter everything except 'decline'">
-                <validation-output for="decline" class="validation-output" id="decline-validation-error">The word <b>"decline"</b> was declined on the server.</validation-output>
+                <validation-output for="decline" class="validation-output" id="decline-validation-error" persistent>
+                    The word <b>"decline"</b> was declined on the server.
+                </validation-output>
             </div>
 
             <!-- Custom validation message -->

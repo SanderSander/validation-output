@@ -72,12 +72,17 @@ Add text content to the `<validation-output>` element to display server-side val
 ```html
 <input type="email" id="email" value="known@email" />
 <validation-output for="email">
-    Email <b>known@email</b> already registered
+    Invalid credentials. Please try again.
+</validation-output>
+
+<input type="text" id="persistent" value="rejected-value" />
+<validation-output for="persistent" persistent>
+    This error will be show again if the value is changed back to the rejected value
 </validation-output>
 ```
 
 When the user modifies the input field, the server-side message is hidden.
-If the user changes the value back to the original, the message will be shown again.
+If the `persistent` attribute is set and the user changes the value back to the rejected value, the message will be shown again.
 
 **Note:** When displaying server-side validation errors, the input element won't have the `:user-invalid` pseudo-class applied. 
 To style server-validated inputs, you can use the `data-server-invalid="true"` attribute selector instead. 
@@ -108,7 +113,8 @@ validation-output:state(has-error) {
 
 ### Attributes
 
-| Attribute  | Required | Description                                              |
-|------------|----------|----------------------------------------------------------|
-| `for`      | Yes      | ID of the input element to validate                      |
-| `template` | No       | ID of the template containing custom validation messages |
+| Attribute    | Required | Description                                                                       |
+|--------------|----------|-----------------------------------------------------------------------------------|
+| `for`        | Yes      | ID of the input element to validate                                               |
+| `template`   | No       | ID of the template containing custom validation messages                          |
+| `persistent` | No       | Show the server validation error again if the value reverts to the rejected value |
