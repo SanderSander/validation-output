@@ -159,9 +159,27 @@ class ValidationOutput extends HTMLElement {
             return;
         }
 
-        // We don't remove the error message, we just remove the `has-error` state.
+        // We don't remove the error message if there is a transition, we just remove the `has-error` state.
+        // It will trigger the transition, and after the transition, the error message will be removed.
         // This makes it easier to style and animate the error message.
+        if (!this.#internals.states.has("has-error")) return;
+
+        const transitionDuration = parseFloat(
+            getComputedStyle(this).transitionDuration,
+        );
         this.#internals.states.delete("has-error");
+        if (transitionDuration === 0) {
+            this.innerHTML = "";
+            return;
+        }
+
+        const handleTransitionEnd = () => {
+            if (this.matches(":user-invalid")) return;
+            this.innerHTML = "";
+        };
+        this.addEventListener("transitionend", handleTransitionEnd, {
+            once: true,
+        });
     }
 
     #setErrorMessage(message: string | DocumentFragment) {
