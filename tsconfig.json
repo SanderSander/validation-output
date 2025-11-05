@@ -3,6 +3,7 @@
     "target": "ES2024",
     "lib": ["ES2024", "DOM"],
     "removeComments": true,
+    "moduleResolution": "node",
     "strict": true,
     "rootDir": "./",
     "declaration": true,
